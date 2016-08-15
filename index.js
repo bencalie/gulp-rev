@@ -140,12 +140,12 @@ plugin.manifest = function (pth, opts) {
 
 		//var revisionedFile = relPath(firstFileBase, file.path);
 		var revisionedFile = file.path;
-		revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(js|css|jpg|png|gif|swf)/, "$1$3.$5?version=$2")
-		revisionedFile = revisionedFile.replace(/.+\/(js|img|images|css)\//, "");
-		revisionedFile = revisionedFile.replace(/skins\/[-\w]+\//, "");
+		revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(html|js|css|jpg|png|gif|swf)/, "$1$3.$5?version=$2")
+		revisionedFile = revisionedFile.replace(/.+\/source\//, "");
+
+
 		var originalFile = path.join(path.dirname(revisionedFile), path.basename(file.revOrigPath)).replace(/\\/g, '/');
-		originalFile = originalFile.replace(/.+\/(js|img|images|css)\//, "");
-		originalFile = originalFile.replace(/skins\/[-\w]+\//, "");
+		originalFile = originalFile.replace(/.+\/source\//, "");
 	
 		//console.log("source:" + originalFile + " >>>>> " + revisionedFile);
 
