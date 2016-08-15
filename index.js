@@ -138,18 +138,23 @@ plugin.manifest = function (pth, opts) {
 			return;
 		}
 
-		//var revisionedFile = relPath(firstFileBase, file.path);
-		var revisionedFile = file.path;
-		revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(html|js|css|jpg|png|gif|swf|eot|svg|ttf|woff|woff2|scss)/, "$1$3.$5?version=$2")
-		revisionedFile = revisionedFile.replace(/.+\/source\//, "");
+		// //var revisionedFile = relPath(firstFileBase, file.path);
+		// var revisionedFile = file.path;
+		// revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(html|js|css|jpg|png|gif|swf|eot|svg|ttf|woff|woff2|scss)/, "$1$3.$5?version=$2")
+		// revisionedFile = revisionedFile.replace(/.+\/source\//, "");
 
 
-		var originalFile = path.join(path.dirname(revisionedFile), path.basename(file.revOrigPath)).replace(/\\/g, '/');
-		originalFile = originalFile.replace(/.+\/source\//, "");
+		// var originalFile = path.join(path.dirname(revisionedFile), path.basename(file.revOrigPath)).replace(/\\/g, '/');
+		// originalFile = originalFile.replace(/.+\/source\//, "");
 	
-		//console.log("source:" + originalFile + " >>>>> " + revisionedFile);
+		// //console.log("source:" + originalFile + " >>>>> " + revisionedFile);
 
-		manifest[originalFile] = revisionedFile;
+		// manifest[originalFile] = revisionedFile;
+
+		var revisionedFile = relPath(file.base, file.path);
+		var originalFile = path.join(path.dirname(revisionedFile), path.basename(file.revOrigPath)).replace(/\\/g, '/');
+
+		manifest[originalFile] = originalFile + '?v=' + file.revHash;
 
 		cb();
 	}, function (cb) {
