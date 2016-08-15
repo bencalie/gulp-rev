@@ -140,7 +140,7 @@ plugin.manifest = function (pth, opts) {
 
 		//var revisionedFile = relPath(firstFileBase, file.path);
 		var revisionedFile = file.path;
-		revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(html|js|css|jpg|png|gif|swf|eot|svg|ttf|woff|woff2)/, "$1$3.$5?version=$2")
+		revisionedFile = revisionedFile.replace(/(\/[\w-]+)-([0-9a-f]{10,10})((\.\w+)*)\.(html|js|css|jpg|png|gif|swf|eot|svg|ttf|woff|woff2|scss)/, "$1$3.$5?version=$2")
 		revisionedFile = revisionedFile.replace(/.+\/source\//, "");
 
 
